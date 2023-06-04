@@ -10,9 +10,12 @@ The final project documents consist of three sql files, two ERD diagrams, an out
 
 The project assumes that the "employees_db" is already created and the use running the files has the appropriate access.  The database used for this project was created using the pgAdmin4 GUI.  Although the sql to create the database is available in pgAdmin4 and not too complex, a more complex script would be needed to search out any connected PIDs, and to terminate those processes, if the script were to drop and create the "employees_db" itself.
 
-#------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------
+
 Before running the data_load script, the path variable at the beginning of the script should be set appropriately for the user's environment.  Where data is stored for this project has to be specified in a string for the dynamic SQL to operate, and is not part of the Python "PATH" variable.   Where the postgres server is running is almost certainly different from computer to computer, so a path relative to that location would not be very meaningful.
-#--------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------
 
 The online application quickdatabasediagrams.com was used to create one of the ERDs, as suggested as an option in the challenge instructions.  An initial SQL for all six tables was created using CODE, and uploaded into opendatabasediagram, and later finalized using Code.   The Postgress SQL produced by the opendatabasediagram app as "export" had many issues, including with putting tables and field names in quotation marks that are then included in the field or table nams, datatypes not known to postgress, and adding all constraints separately by updating the tables after the fact, so basically its SQL output was not used for this project.  
 
@@ -20,9 +23,11 @@ After the initial data modeling was done in opendatabasediagram, and the postgre
 
 The advantage of opendatabasediagram's less-detailed diagram is that the table names are easy to see and stand out.  The advantage of the PgAdmin4 ERD program is the greater detail even in the "lesser" detail mode, the greater use of color and images, the easier-to-see relationship indicators, and the use of the proper data types because the ERD has moved past the conceptual level.  Both diagrams are included in the submission.
 
-#------------------------------------------------------------------------------------
+
+=====================================================================================
 If the load script is not run and the data is imported through the PgAdmin4 GUI, the ISO date type must be set first, using "SET datestyle TO 'ISO, MDY';"  The sql script does this first.  This is because the csv input files have dates in the format mm/dd/yy, and the postgress date type is in yyyy-mm-dd format, and otherwise an intermediate script would have to be done to convert the dates or to load them as strings and then reformat them.   Using the datestyle setting is only for the local session.
-#------------------------------------------------------------------------------------
+
+====================================================================================
 
 If the load_data script is not run, any existing tables have to be emptied in the proper order, to account for the foreign key constraints, before they can be reloaded.  Data also has to be imported in essentially the reverse order of the table emptying.  Similarly, the schema sql deletes any existing tables in a specific order, then creates them in essentially the reverse order, to account for the foreign key constraints.   More information on the ordering is contained in the employees_schema.sql and employees_data_load.sql.
 
