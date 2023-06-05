@@ -18,16 +18,20 @@ The project assumes that the "employees_db" is already created and the user runn
 running processes, so the database was created manually using the PgAdmin4 GUI.
 
 ----------------------------------------------------------------------------------------------------------------
-Before running the data_load script, the path variable at the beginning of the script should be set appropriately for the user's environment.  Where data is stored for this project has to be specified in a string for the dynamic SQL to operate, and is not part of the Python "PATH" variable.   Where the postgres server is running is almost certainly different from computer to computer, so a path relative to that location would not be very meaningful.
+Before running the data_load script, the path variable at the beginning of the script should be set appropriately for the user's environment. 
 -------------------------------------------------------------------------------------------------------------------
+ Where data is stored for this project has to be specified in a string for the dynamic SQL to operate, and is not part of the Python "PATH" variable.   Where the postgres server is running is almost certainly different from computer to computer, so a path relative to that location would not be very meaningful.
+ 
+----------------------------------------------------------------------------------------------------------------
+If the load script is not run and the data is imported through the PgAdmin4 GUI, the ISO date type must be set first, using "SET datestyle TO 'ISO, MDY';"  
+----------------------------------------------------------------------------------------------------------------
+The sql script does this first.  This is because the csv input files have dates in the format mm/dd/yy, and the postgress date type is in yyyy-mm-dd format, and otherwise an intermediate script would have to be done to convert the dates,  or to load them as strings and then reformat them.   The datestyle setting done this way is only applicable for the local session.
 
 ----------------------------------------------------------------------------------------------------------------
-If the load script is not run and the data is imported through the PgAdmin4 GUI, the ISO date type must be set first, using "SET datestyle TO 'ISO, MDY';"  The sql script does this first.  This is because the csv input files have dates in the format mm/dd/yy, and the postgress date type is in yyyy-mm-dd format, and otherwise an intermediate script would have to be done to convert the dates,  or to load them as strings and then reformat them.   The datestyle setting done this way is only applicable for the local session.
-----------------------------------------------------------------------------------------------------------------
+If the load_data script is not run, any existing tables have to be emptied in the proper order, to account for the foreign key constraints, before they can be reloaded.  Data also has to be imported in essentially the reverse order of the table emptying. 
+ ----------------------------------------------------------------------------------------------------------------
 
-----------------------------------------------------------------------------------------------------------------
-If the load_data script is not run, any existing tables have to be emptied in the proper order, to account for the foreign key constraints, before they can be reloaded.  Data also has to be imported in essentially the reverse order of the table emptying.  Similarly, the schema sql deletes any existing tables in a specific order, then creates them in essentially the reverse order, to account for the foreign key constraints.   More information on the ordering is contained in the employees_schema.sql and employees_data_load.sql.
-----------------------------------------------------------------------------------------------------------------
+Similarly, the schema sql deletes any existing tables in a specific order, then creates them in essentially the reverse order, to account for the foreign key constraints.   More information on the ordering is contained in the employees_schema.sql and employees_data_load.sql.
 
 The output files from the analysis queries are all stored in the "output" directory.  
 
