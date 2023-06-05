@@ -41,18 +41,15 @@ Some of the files, for both input and output, are very large.  The employee data
 During the analysis phase, a separate query was run, and a separate output file was created, ordered by employee_id rather than by department_id, so that the employees who were in more than one department could be examined.  This output, discussed below, is not part of the data delivered.  Consider three examples:
 
 d002	10050	Dredge	Yinghua	Finance
-
 d007	10050	Dredge	Yinghua	Sales
-------
+---
 
 d005	10070	Garigliano	Reuven	Development
-
 d008	10070	Garigliano	Reuven	Research
 
 -----
 
 d007	10088	Syrzycki	Jungsoon	Sales
-
 d009	10088	Syrzycki	Jungsoon	Customer Service
 
 From this data, is is not clear if the employees had more than one job at a time, or if they were promoted or changed positions.  A quick visual examination shows some form of relationship between the different departments involved.  Moving from Customer Service to Sales, Sales to Finance, or Research to Development, as these three examples indicate, as well as the numbers involved {31,580), suggests that it is more likely these were promotions, but the only date we have available about hiring is the original hire date, nothing about any promotion dates, if that is what these multiple rows represent.
