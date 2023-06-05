@@ -41,18 +41,20 @@ Some of the files, for both input and output, are very large.  The employee data
 During the analysis phase, a separate query was run, and a separate output file was created, ordered by employee_id rather than by department_id, so that the employees who were in more than one department could be examined.  This output, discussed below, is not part of the data delivered.  Consider three examples:
 
 d002	10050	Dredge	Yinghua	Finance
+
 d007	10050	Dredge	Yinghua	Sales
----
+
 
 d005	10070	Garigliano	Reuven	Development
+
 d008	10070	Garigliano	Reuven	Research
 
------
 
 d007	10088	Syrzycki	Jungsoon	Sales
+
 d009	10088	Syrzycki	Jungsoon	Customer Service
 
-From this data, is is not clear if the employees had more than one job at a time, or if they were promoted or changed positions.  A quick visual examination shows some form of relationship between the different departments involved.  Moving from Customer Service to Sales, Sales to Finance, or Research to Development, as these three examples indicate, as well as the numbers involved {31,580), suggests that it is more likely these were promotions, but the only date we have available about hiring is the original hire date, nothing about any promotion dates, if that is what these multiple rows represent.
+From this data, is is not clear if the employees had more than one job at a time, or if they were promoted or changed positions.  A quick visual examination shows some form of relationship between the different departments involved.  Moving from Customer Service to Sales, Sales to Finance, or Research to Development, as these three examples indicate, as well as the numbers involved {31,580), suggests that it is more likely these were promotions, but the only date we have available about hiring is the original hire date, nothing about any promotion dates, if that is what these multiple rows represent.  On the other hand, the fact that each employee has only one title could suggest that the employees simply hold two roles in different departments at the same time, or hold a joint role.
 
 Another notable characteristic of this data is that, while there were more than 300,000 employees during this time period, there are only 1,639 distinct last names.  The names appear to be largely German, with some Italian and some Eastern European as the next largest groups.  This might suggest a German or Swiss company, but neither the names themselves, nor the relatively small number of last names, seem likely to be typical of a U.S. company, in any location that would have this many employees.   Some of the names appear to be famous authors or scientists, so maybe they are all AI generated.
 
